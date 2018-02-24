@@ -20,22 +20,22 @@ class Main extends PluginBase implements Listener{
   public function antiTP(PlayerCommandPreprocessEvent $ev){
     $p = $ev->getPlayer();
     $command = strtolower(explode(" ", $ev->getMessage())[0]);
-    if($p->isOp() or $p->hasPermission("pocketmine.command.teleport")){
-      if($command == "./tp" || $command == "/tp"){
-        $p->setGamemode(4);
+    if($p->isOp() or $p->hasPermission("simplewarp.warp.pvp")){
+      if($command == "./arena" || $command == "/arena"){
+        $p->setGamemode(0);
         $this->tper[strtolower($p->getName())] = strtolower($p->getName());
       }
       // cancels event if force tped and run blocked force tp command
       if(isset($this->tper[strtolower($p->getName())])){
-        if($command == "/sethome" || $command == "./sethome"){
+        if($command == "/fly" || $command == "./fly"){
           $ev->setCancelled(true);
-          $p->sendMessage("This Command is Disabled Since You Force Tped! , Remove this by tping to spawn!");
+          $p->sendMessage("§cYou are not allowed to use this command because you're in the arena. To fix this, use /spawn.");
         }
       }
       
       if($command == "/spawn" || $command == "./spawn"){
         unset($this->tper[strtolower($p->getName())]);
-        $p->sendMessage("Forced TPed removed!");
+        $p->sendMessage("§aFixed! Now try /fly.");
         $p->setGamemode(0);
       }
     }
