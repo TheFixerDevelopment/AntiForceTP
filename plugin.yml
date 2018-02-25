@@ -2,4 +2,4 @@ name: AntiEx
 main: Angel\AntiTP\Main
 version: 1.0.0
 api: [3.0.0-ALPHA10, 3.0.0-ALPHA11]
-author: VMPE Development Team
+author: Angel
